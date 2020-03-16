@@ -1,17 +1,20 @@
 import React,{useContext} from 'react'
-import {View,Text,StyleSheet, Button} from 'react-native';
+import {View,Text,StyleSheet, Button,FlatList} from 'react-native';
 import BlogContext from '../context/BlogContext';
 
 const IndexScreen = ({navigation}) => {
-    const vlaue = useContext(BlogContext);
+    const {data,addBlogPost} = useContext(BlogContext);
     return (
         <View>
             <Text>Home Screen</Text>
-    <Text>{vlaue}</Text>
-            <Button 
-                title="Go to Details"
-                onPress={() => navigation.navigate('Details')}
-                />
+            <Button title="Add Post" onPress={addBlogPost} />
+            <FlatList
+                data={data}
+                keyExtractor={(blogPost) => blogPost.title}
+                renderItem={({item}) =>{
+                return <Text>{item.title}</Text>
+                }}
+            />
         </View>
     )
 }
