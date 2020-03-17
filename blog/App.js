@@ -7,7 +7,7 @@ import {BlogProvider} from './src/context/BlogContext';
 
 // const Stack = createStackNavigator();
 
-const App = () => {
+const App = () => { 
   return (
     <BlogProvider>
       <Nav/>
