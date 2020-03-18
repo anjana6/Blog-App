@@ -12,24 +12,7 @@ const App = () => {
     <BlogProvider>
       <Nav/>
     </BlogProvider>
-    
-    // <NavigationContainer>
-    //   <Stack.Navigator initialRouteName="Index">
-    //     <Stack.Screen name="Index" component={IndexScreen} options={{title:'Blog'}} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
   );
 }
 
 export default App;
-
-// const About = () => {
-//   const navigation = useNavigation();
-
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Text>About Screen</Text>
-//       <Button title="Home Page" onPress={() => navigation.navigate("Home")} />
-//     </View>
-//   );
-// };

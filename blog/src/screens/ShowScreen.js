@@ -7,7 +7,6 @@ const ShowScreen = ({route,navigation}) =>{
     const {data} = useContext(BlogContext);
 
     const blogPost = data.find((blogpost) => blogpost.id === id);
-    console.log(blogPost);
     return (
        <View>
            <Text>{blogPost.title}</Text>

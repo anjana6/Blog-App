@@ -1,9 +1,12 @@
 import React,{useContext} from 'react'
 import {View,Text,StyleSheet, Button,FlatList,TouchableOpacity} from 'react-native';
 import BlogContext from '../context/BlogContext';
-import {Feather} from '@expo/vector-icons'; 
+import {Feather} from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native';
 
-const IndexScreen = ({navigation}) => {
+const IndexScreen = () => {
+    const navigation = useNavigation();
+   
     const {data,addBlogPost,deleteBlogPost} = useContext(BlogContext);
     return (
         <View>
@@ -27,6 +30,19 @@ const IndexScreen = ({navigation}) => {
         </View>
     )
 };
+
+// IndexScreen.navigationOption = () => {
+//     return {
+//         headerRight: <Feather name="plus"/>
+//     }
+// }
+
+export const createScreen = () => {
+    console.log('ji');
+    const navigation = useNavigation();
+    navigation.navigate('Show');
+}
+
 
 const styles = StyleSheet.create({
     row:{
