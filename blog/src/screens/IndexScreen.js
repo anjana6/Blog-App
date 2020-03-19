@@ -7,10 +7,9 @@ import {useNavigation} from '@react-navigation/native';
 const IndexScreen = () => {
     const navigation = useNavigation();
    
-    const {data,addBlogPost,deleteBlogPost} = useContext(BlogContext);
+    const {data,deleteBlogPost} = useContext(BlogContext);
     return (
         <View>
-            <Button title="Add Post" onPress={addBlogPost} />
             <FlatList 
                 data={data}
                 keyExtractor={(blogPost) => blogPost.title}
@@ -37,10 +36,10 @@ const IndexScreen = () => {
 //     }
 // }
 
-export const createScreen = () => {
+export const createScreen = ({navigation}) => {
     console.log('ji');
-    const navigation = useNavigation();
-    navigation.navigate('Show');
+    navigation.navigate('Create');
+    
 }
 
 

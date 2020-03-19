@@ -8,6 +8,7 @@ import {TouchableOpacity } from "react-native";
 import {Feather} from '@expo/vector-icons'; 
 import {Button } from 'react-native-elements';
 import {createScreen} from './src/screens/IndexScreen';
+import {By} from './src/screens/HeaderScreen';
 
  
 
@@ -24,7 +25,7 @@ const Naviget = () => {
           name="Index" 
           component={IndexScreen} 
           options={{title:'Blog List',
-          headerRight: () => <Bu/>
+          headerRight: () =>( <By/>)
                     
                     }} 
         />
@@ -36,12 +37,12 @@ const Naviget = () => {
   
 }
 
-const Bu = () => {
-  //const navigation = useNavigation();
-  return(
-    <Button onPress={createScreen} icon={<Feather name="plus"/>}/>
-  )
-}
+// const Bu = () => {
+//   const navigation = useNavigation();
+//   return(
+//     <Button onPress={() => createScreen({navigation})} icon={<Feather name="plus"/>}/>
+//   )
+// }
 
 
 export default Naviget;

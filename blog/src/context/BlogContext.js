@@ -5,7 +5,7 @@ const BlogContext = React.createContext();
 const blogReducer = (state,action) =>{
     switch(action.type){
         case'ADD_BLOGPOST':
-            return [...state,{id: Math.floor(Math.random()*99999),title: `Blog Post #${state.length+1}`}];
+            return [...state,{id: Math.floor(Math.random()*99999),title:action.Payload.title,content:action.Payload.content}];
         case 'DELETE_BLOGPOST':
             return state.filter((blogPost) => blogPost.id !== action.Payload);
         default:
@@ -16,10 +16,11 @@ const blogReducer = (state,action) =>{
 export const BlogProvider = ({children}) => {
     const[blogPosts,dispatch] = useReducer(blogReducer,[]);
 
-    const addBlogPost = () => {
+    const addBlogPost = (title,content,callback) => {
         dispatch({
-            type: 'ADD_BLOGPOST',
-        })
+            type: 'ADD_BLOGPOST',Payload:{title,content}
+        });
+        callback();
     };
     const deleteBlogPost = (id) =>{
         dispatch({
@@ -27,6 +28,7 @@ export const BlogProvider = ({children}) => {
             Payload: id
         })
     };
+
 
     return <BlogContext.Provider value={{data:blogPosts, addBlogPost,deleteBlogPost}}>
         {children}
