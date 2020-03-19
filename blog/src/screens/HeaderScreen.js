@@ -1,8 +1,9 @@
 
 import React from 'react';
-import {Feather} from '@expo/vector-icons'; 
+import {Feather,EvilIcons} from '@expo/vector-icons'; 
 import {Button } from 'react-native-elements';
 import {createScreen} from './IndexScreen';
+import {editScreen} from './ShowScreen';
 import { useNavigation} from "@react-navigation/native";
 
 export const By = () => {
@@ -12,7 +13,10 @@ export const By = () => {
     )
   }
 
-export const ac = () => {
-
+export const Ac = () => {
+  const navigation = useNavigation();
+ return(
+   <Button onPress={() => editScreen({navigation})} icon={<EvilIcons name="pencil" size={20}/>}/>
+ )
 }
 

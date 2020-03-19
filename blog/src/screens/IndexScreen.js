@@ -36,8 +36,9 @@ const IndexScreen = () => {
 //     }
 // }
 
+
+
 export const createScreen = ({navigation}) => {
-    console.log('ji');
     navigation.navigate('Create');
     
 }

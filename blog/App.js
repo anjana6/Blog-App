@@ -5,6 +5,7 @@ import IndexScreen from './src/screens/IndexScreen';
 import Nav from './Nav';
 import {BlogProvider} from './src/context/BlogContext';
 
+
 // const Stack = createStackNavigator();
 
 const App = () => { 
