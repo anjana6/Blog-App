@@ -4,8 +4,14 @@ import BlogContext from '../context/BlogContext';
 import {Feather} from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
 
-const IndexScreen = () => {
-    const navigation = useNavigation();
+const IndexScreen = ({navigation}) => {
+    
+    navigation.setOptions({
+        headerRight: () => 
+            <TouchableOpacity onPress={()=>{navigation.navigate('Create')}}>
+                <Feather style={styles.plusButton} name="plus"/>
+            </TouchableOpacity> 
+    });
    
     const {data,deleteBlogPost} = useContext(BlogContext);
     return (
@@ -30,12 +36,6 @@ const IndexScreen = () => {
     )
 };
 
-// IndexScreen.navigationOption = () => {
-//     return {
-//         headerRight: <Feather name="plus"/>
-//     }
-// }
-
 
 
 export const createScreen = ({navigation}) => {
@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
     },
     icon:{
         fontSize:24
+    },
+    plusButton:{
+        fontSize:30,
+        marginRight:20,
+        backgroundColor:"#1E90FF"
     }
 })
 

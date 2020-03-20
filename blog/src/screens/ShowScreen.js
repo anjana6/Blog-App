@@ -1,12 +1,19 @@
 import React,{useContext} from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity} from 'react-native';
 import BlogContext from '../context/BlogContext';
+import {EvilIcons} from '@expo/vector-icons'; 
 
-let id = 0;
-const ShowScreen = ({route}) =>{
-    id = route.params.id;
-    // console.log(id);
-    // const {id} = route.params;
+
+const ShowScreen = ({route,navigation}) =>{
+  const {id} = route.params;
+
+    navigation.setOptions({
+        headerRight: () => 
+            <TouchableOpacity onPress={()=>{navigation.navigate('Edit',{id:id})}}>
+                <EvilIcons style={style.pencilButton} name="pencil"/>
+            </TouchableOpacity> 
+    }) 
+
     const {data} = useContext(BlogContext);
 
     const blogPost = data.find((blogpost) => blogpost.id === id);
@@ -18,9 +25,13 @@ const ShowScreen = ({route}) =>{
     )
 }
 
- export const editScreen = ({navigation}) => {
-    navigation.navigate('Edit',{id:id})
-}
+const style = StyleSheet.create({
+    pencilButton:{
+        fontSize:30,
+        marginRight:20,
+        backgroundColor:"#1E90FF"
+    }
+})
 
 
 
