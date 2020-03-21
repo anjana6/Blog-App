@@ -1,8 +1,7 @@
 import React,{useContext} from 'react'
-import {View,Text,StyleSheet, Button,FlatList,TouchableOpacity} from 'react-native';
+import {View,Text,StyleSheet,FlatList,TouchableOpacity} from 'react-native';
 import BlogContext from '../context/BlogContext';
 import {Feather} from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/native';
 
 const IndexScreen = ({navigation}) => {
     

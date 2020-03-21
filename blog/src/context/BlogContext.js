@@ -8,6 +8,10 @@ const blogReducer = (state,action) =>{
             return [...state,{id: Math.floor(Math.random()*99999),title:action.Payload.title,content:action.Payload.content}];
         case 'DELETE_BLOGPOST':
             return state.filter((blogPost) => blogPost.id !== action.Payload);
+        case 'EDIT_BLOGPOST':
+            return state.map((blogPost) =>{
+                return blogPost.id === action.Payload.id ? action.Payload : blogPost;
+            });
         default:
             return state;
     }
@@ -20,7 +24,8 @@ export const BlogProvider = ({children}) => {
         dispatch({
             type: 'ADD_BLOGPOST',Payload:{title,content}
         });
-        callback();
+        if(callback)
+            callback();
     };
     const deleteBlogPost = (id) =>{
         dispatch({
@@ -28,9 +33,18 @@ export const BlogProvider = ({children}) => {
             Payload: id
         })
     };
+    const editBlogPost = (id,title,content,callback) => {
+        dispatch({
+            type:'EDIT_BLOGPOST',
+            Payload:{id,title,content}
+        });
+        if(callback)
+            callback();
+
+    }
 
 
-    return <BlogContext.Provider value={{data:blogPosts, addBlogPost,deleteBlogPost}}>
+    return <BlogContext.Provider value={{data:blogPosts, addBlogPost,deleteBlogPost,editBlogPost}}>
         {children}
     </BlogContext.Provider>;
 };

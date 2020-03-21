@@ -18,9 +18,9 @@ const ShowScreen = ({route,navigation}) =>{
 
     const blogPost = data.find((blogpost) => blogpost.id === id);
     return (
-       <View>
-           <Text>{blogPost.title}</Text>
-            <Text>{blogPost.content}</Text>
+       <View style={style.viewStyle}>
+           <Text style={style.textStyle}>Title:{blogPost.title}</Text>
+            <Text style={style.textStyle}>Content:{blogPost.content}</Text>
        </View>
     )
 }
@@ -30,7 +30,17 @@ const style = StyleSheet.create({
         fontSize:30,
         marginRight:20,
         backgroundColor:"#1E90FF"
+    },
+    viewStyle:{
+        margin:20,
+        padding:10,
+        borderColor:'black',
+        borderWidth:2,
+    },
+    textStyle:{
+        fontSize:20
     }
+
 })
 
 
